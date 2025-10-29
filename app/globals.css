@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glow;
+}
+
+/* Neon focus ring */
+.focus-neon:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.35);
+}
+
+/* Section spacing */
+.section {
+  @apply py-12 sm:py-16 md:py-20 lg:py-24;
+}
+
+/* Gradient background */
+body {
+  background-image: theme(backgroundImage.glass-gradient);
+}
+
+/* Hide scrollbar for mobile navbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
