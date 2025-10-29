@@ -86,49 +86,53 @@ export function Hero() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="inline-block glass px-4 py-1.5 rounded-full text-xs sm:text-sm mb-4 sm:mb-6"
             >
-              <span className="inline-block w-2 h-2 bg-neon-cyan rounded-full mr-2 animate-pulse" />
-              Available for opportunities
+              <div className="inline-block glass px-4 py-1.5 rounded-full text-xs sm:text-sm mb-4 sm:mb-6">
+                <span className="inline-block w-2 h-2 bg-neon-cyan rounded-full mr-2 animate-pulse" />
+                Available for opportunities
+              </div>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight"
             >
-              <span className="text-white/90">Hi, I am </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-cyan">
-                Tejas Sonkusare
-              </span>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
+                <span className="text-white/90">Hi, I am </span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-cyan">
+                  Tejas Sonkusare
+                </span>
+              </div>
             </motion.h1>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1 }}
-              className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl h-10 sm:h-12 text-neon-cyan font-semibold"
             >
-              <span>{displayedText}</span>
-              <span className="animate-pulse">|</span>
+              <div className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl h-10 sm:h-12 text-neon-cyan font-semibold">
+                <span>{displayedText}</span>
+                <span className="animate-pulse">|</span>
+              </div>
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base md:text-lg text-white/70 leading-relaxed"
             >
-              I build scalable, secure, and automated cloud systems and deliver seamless full‑stack experiences that drive business impact.
+              <span className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base md:text-lg text-white/70 leading-relaxed block">
+                I build scalable, secure, and automated cloud systems and deliver seamless full‑stack experiences that drive business impact.
+              </span>
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.4 }}
-              className="mt-6 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start"
             >
+              <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
               <a
                 href="#projects"
                 className="relative glass px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:shadow-glow transition-all duration-300 group overflow-hidden text-center"
@@ -149,6 +153,7 @@ export function Hero() {
               >
                 Contact Me
               </a>
+              </div>
             </motion.div>
           </div>
 
@@ -156,22 +161,25 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative"
           >
+            <div className="relative">
             <div className="relative mx-auto max-w-md">
               <div className="absolute inset-0 rounded-full blur-3xl bg-neon-cyan/30" />
               {/* Rotating border ring */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border-2 border-transparent bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-cyan opacity-50"
                 style={{
+                  position: "absolute",
+                  inset: 0,
                   maskImage: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                   maskComposite: "xor",
                   WebkitMaskComposite: "xor",
                   padding: "3px",
                 }}
-              />
+              >
+                <div className="absolute inset-0 rounded-full border-2 border-transparent bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-cyan opacity-50" />
+              </motion.div>
               <div className="relative glass rounded-full p-2 aspect-square overflow-hidden group border-2 border-neon-cyan/30">
                 <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan/20 via-transparent to-neon-blue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Image
@@ -189,73 +197,82 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, -12, 0], rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="hidden lg:block absolute -top-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-xs"
               >
-                <span className="text-neon-cyan font-semibold">DevOps</span>
+                <div className="hidden lg:block absolute -top-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-xs">
+                  <span className="text-neon-cyan font-semibold">DevOps</span>
+                </div>
               </motion.div>
 
               {/* Top Right */}
               <motion.div
                 animate={{ x: [0, 10, 0], y: [0, -10, 0], rotate: [0, 3, -3, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, delay: 0.3 }}
-                className="hidden lg:block absolute top-8 -right-8 glass px-3 py-1.5 rounded-full text-xs"
               >
-                <span className="text-neon-blue">Cloud</span>
+                <div className="hidden lg:block absolute top-8 -right-8 glass px-3 py-1.5 rounded-full text-xs">
+                  <span className="text-neon-blue">Cloud</span>
+                </div>
               </motion.div>
 
               {/* Right Center */}
               <motion.div
                 animate={{ x: [0, 12, 0], rotate: [0, 4, -4, 0] }}
                 transition={{ duration: 3.8, repeat: Infinity, delay: 0.6 }}
-                className="hidden lg:block absolute top-1/2 -right-20 glass px-3 py-1.5 rounded-full text-xs"
               >
-                <span className="text-neon-cyan">Full-Stack</span>
+                <div className="hidden lg:block absolute top-1/2 -right-20 glass px-3 py-1.5 rounded-full text-xs">
+                  <span className="text-neon-cyan">Full-Stack</span>
+                </div>
               </motion.div>
 
               {/* Bottom Right */}
               <motion.div
                 animate={{ x: [0, 8, 0], y: [0, 10, 0], rotate: [0, -3, 3, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, delay: 0.9 }}
-                className="hidden lg:block absolute bottom-8 -right-8 glass px-3 py-1.5 rounded-full text-xs"
               >
-                <span className="text-neon-blue">Cybersecurity</span>
+                <div className="hidden lg:block absolute bottom-8 -right-8 glass px-3 py-1.5 rounded-full text-xs">
+                  <span className="text-neon-blue">Cybersecurity</span>
+                </div>
               </motion.div>
 
               {/* Bottom Center */}
               <motion.div
                 animate={{ y: [0, 12, 0], rotate: [0, -5, 5, 0] }}
                 transition={{ duration: 4.3, repeat: Infinity, delay: 1.2 }}
-                className="hidden lg:block absolute -bottom-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-xs"
               >
-                <span className="text-neon-cyan font-semibold">AI/ML</span>
+                <div className="hidden lg:block absolute -bottom-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-xs">
+                  <span className="text-neon-cyan font-semibold">AI/ML</span>
+                </div>
               </motion.div>
 
               {/* Bottom Left */}
               <motion.div
                 animate={{ x: [0, -8, 0], y: [0, 10, 0], rotate: [0, 3, -3, 0] }}
                 transition={{ duration: 3.7, repeat: Infinity, delay: 1.5 }}
-                className="hidden lg:block absolute bottom-8 -left-12 glass px-3 py-1.5 rounded-full text-xs"
               >
-                <span className="text-neon-blue">Digital Marketing</span>
+                <div className="hidden lg:block absolute bottom-8 -left-12 glass px-3 py-1.5 rounded-full text-xs">
+                  <span className="text-neon-blue">Digital Marketing</span>
+                </div>
               </motion.div>
 
               {/* Left Center */}
               <motion.div
                 animate={{ x: [0, -12, 0], rotate: [0, -4, 4, 0] }}
                 transition={{ duration: 4.1, repeat: Infinity, delay: 1.8 }}
-                className="hidden lg:block absolute top-1/2 -left-20 glass px-3 py-1.5 rounded-full text-xs"
               >
-                <span className="text-neon-cyan">Content</span>
+                <div className="hidden lg:block absolute top-1/2 -left-20 glass px-3 py-1.5 rounded-full text-xs">
+                  <span className="text-neon-cyan">Content</span>
+                </div>
               </motion.div>
 
               {/* Top Left */}
               <motion.div
                 animate={{ x: [0, -10, 0], y: [0, -10, 0], rotate: [0, -3, 3, 0] }}
                 transition={{ duration: 4.4, repeat: Infinity, delay: 2.1 }}
-                className="hidden lg:block absolute top-8 -left-16 glass px-3 py-1.5 rounded-full text-xs"
               >
-                <span className="text-neon-blue">Music</span>
+                <div className="hidden lg:block absolute top-8 -left-16 glass px-3 py-1.5 rounded-full text-xs">
+                  <span className="text-neon-blue">Music</span>
+                </div>
               </motion.div>
+            </div>
             </div>
           </motion.div>
         </div>

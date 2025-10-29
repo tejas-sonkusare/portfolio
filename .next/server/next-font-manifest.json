@@ -1,13 +1,1 @@
-{
-  "app": {
-    "[project]/app/page": [
-      "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.33f50665.woff2"
-    ],
-    "[project]/app/_not-found/page": [
-      "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.33f50665.woff2"
-    ]
-  },
-  "appUsingSizeAdjust": true,
-  "pages": {},
-  "pagesUsingSizeAdjust": false
-}
+{"pages":{},"app":{"/Users/tejassonkusare5/Desktop/portfolio/app/layout":["static/media/904be59b21bd51cb-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}

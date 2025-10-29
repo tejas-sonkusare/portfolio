@@ -42,12 +42,13 @@ export function Education() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8 sm:mb-12 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
-            Education
-          </h2>
-          <p className="text-white/60 mt-2 sm:mt-3 text-base sm:text-lg">Academic Background & Achievements</p>
+          <div className="mb-8 sm:mb-12 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
+              Education
+            </h2>
+            <p className="text-white/60 mt-2 sm:mt-3 text-base sm:text-lg">Academic Background & Achievements</p>
+          </div>
         </motion.div>
 
         {/* Education Card */}
@@ -129,24 +130,29 @@ export function Education() {
                     whileInView={{ width: "89.1%" }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full"
-                  />
+                    style={{ height: "100%" }}
+                  >
+                    <div className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full" />
+                  </motion.div>
                 </div>
               </div>
 
               {/* View Degree Button */}
               <div className="mb-6">
-                <motion.button
-                  onClick={() => setShowDegree(true)}
+                <motion.div
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-purple text-white font-bold shadow-xl hover:shadow-neon-cyan/50 transition-all flex items-center justify-center gap-3"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  View Degree Certificate
-                </motion.button>
+                  <button
+                    onClick={() => setShowDegree(true)}
+                    className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-purple text-white font-bold shadow-xl hover:shadow-neon-cyan/50 transition-all flex items-center justify-center gap-3"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    View Degree Certificate
+                  </button>
+                </motion.div>
               </div>
 
               {/* Subjects */}
@@ -165,12 +171,13 @@ export function Education() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
                     >
-                      <span className="text-2xl">{subject.icon}</span>
-                      <span className="text-white/80 group-hover:text-white transition-colors text-sm">
-                        {subject.name}
-                      </span>
+                      <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group">
+                        <span className="text-2xl">{subject.icon}</span>
+                        <span className="text-white/80 group-hover:text-white transition-colors text-sm">
+                          {subject.name}
+                        </span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>

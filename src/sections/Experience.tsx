@@ -73,14 +73,15 @@ export function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
-            Professional Journey
-          </h2>
-          <p className="text-white/60 mt-4 text-lg">
-            Building, creating, and innovating across different domains
-          </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
+              Professional Journey
+            </h2>
+            <p className="text-white/60 mt-4 text-lg">
+              Building, creating, and innovating across different domains
+            </p>
+          </div>
         </motion.div>
 
         <div className="relative">
@@ -95,30 +96,33 @@ export function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: i * 0.15, duration: 0.5 }}
-                className={`relative flex flex-col md:flex-row gap-8 ${
-                  i % 2 === 0 ? "md:flex-row-reverse" : ""
-                }`}
               >
+                <div className={`relative flex flex-col md:flex-row gap-8 ${
+                  i % 2 === 0 ? "md:flex-row-reverse" : ""
+                }`}>
                 {/* Content Card */}
                 <div className="flex-1 md:w-[calc(50%-2rem)] pt-8">
                   <motion.div
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
-                    className="group relative glass rounded-2xl p-6 md:p-8 h-full border border-white/10 hover:border-white/20 transition-all duration-300"
                   >
-                    {/* Gradient overlay on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
+                    <div className="group relative glass rounded-2xl p-6 md:p-8 h-full border border-white/10 hover:border-white/20 transition-all duration-300">
+                      {/* Gradient overlay on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
                     
                     {/* Icon Badge */}
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className={`absolute -top-8 ${
-                        i % 2 === 0 ? "md:left-6" : "md:right-6"
-                      } left-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${exp.color} flex items-center justify-center text-3xl shadow-lg shadow-black/50`}
-                    >
-                      {exp.icon}
-                    </motion.div>
+                    <div className={`absolute -top-8 ${
+                      i % 2 === 0 ? "md:left-6" : "md:right-6"
+                    } left-6`}>
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${exp.color} flex items-center justify-center text-3xl shadow-lg shadow-black/50`}>
+                          {exp.icon}
+                        </div>
+                      </motion.div>
+                    </div>
 
                     <div className="relative mt-4">
                       {/* Header */}
@@ -158,15 +162,17 @@ export function Experience() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 + idx * 0.05 }}
-                            className="flex gap-3 text-white/70 text-sm md:text-base group/item"
                           >
-                            <span className={`mt-1.5 w-1.5 h-1.5 rounded-full bg-gradient-to-r ${exp.color} flex-shrink-0 group-hover/item:scale-150 transition-transform`} />
-                            <span className="group-hover/item:text-white/90 transition-colors">
-                              {point}
-                            </span>
+                            <div className="flex gap-3 text-white/70 text-sm md:text-base group/item">
+                              <span className={`mt-1.5 w-1.5 h-1.5 rounded-full bg-gradient-to-r ${exp.color} flex-shrink-0 group-hover/item:scale-150 transition-transform`} />
+                              <span className="group-hover/item:text-white/90 transition-colors">
+                                {point}
+                              </span>
+                            </div>
                           </motion.li>
                         ))}
                       </ul>
+                    </div>
                     </div>
                   </motion.div>
                 </div>
@@ -178,16 +184,18 @@ export function Experience() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.15 + 0.3, type: "spring" }}
-                    className="relative"
                   >
-                    <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.color} shadow-lg relative z-10`}>
-                      <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${exp.color} animate-ping opacity-75`} />
+                    <div className="relative">
+                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.color} shadow-lg relative z-10`}>
+                        <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${exp.color} animate-ping opacity-75`} />
+                      </div>
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Spacer for alternating layout */}
                 <div className="hidden md:block flex-1 md:w-[calc(50%-2rem)]" />
+                </div>
               </motion.div>
             ))}
           </div>
