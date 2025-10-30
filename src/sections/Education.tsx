@@ -247,13 +247,14 @@ export function Education() {
 
                       {/* Loading text */}
                       <div className="text-center">
-                        <motion.h3 
-                          className="text-2xl font-bold text-white mb-2"
+                        <motion.div
                           animate={{ opacity: [1, 0.5, 1] }}
                           transition={{ duration: 1.5, repeat: Infinity }}
                         >
-                          Loading Degree Certificate...
-                        </motion.h3>
+                          <h3 className="text-2xl font-bold text-white mb-2">
+                            Loading Degree Certificate...
+                          </h3>
+                        </motion.div>
                         <p className="text-white/60 text-sm">Please wait a moment</p>
                       </div>
 
@@ -262,7 +263,6 @@ export function Education() {
                         {[0, 1, 2].map((i) => (
                           <motion.div
                             key={i}
-                            className="w-3 h-3 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple"
                             animate={{
                               scale: [1, 1.5, 1],
                               opacity: [0.5, 1, 0.5]
@@ -272,18 +272,21 @@ export function Education() {
                               repeat: Infinity,
                               delay: i * 0.2
                             }}
-                          />
+                          >
+                            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple" />
+                          </motion.div>
                         ))}
                       </div>
 
                       {/* Progress bar */}
                       <div className="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
                         <motion.div
-                          className="h-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink"
                           initial={{ width: "0%" }}
                           animate={{ width: "100%" }}
                           transition={{ duration: 1, ease: "easeInOut" }}
-                        />
+                        >
+                          <div className="h-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink" />
+                        </motion.div>
                       </div>
                     </div>
                     </div>
