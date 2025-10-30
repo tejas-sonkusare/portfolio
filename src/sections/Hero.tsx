@@ -66,7 +66,7 @@ export function Hero() {
   }, [charIndex, isDeleting, skillIndex]);
 
   return (
-    <section id="home" className="section relative overflow-hidden pt-20 pb-16 min-h-[88vh] flex items-center">
+    <section id="home" className="section relative overflow-hidden pt-28 min-h-screen flex items-center">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-neon-blue/10" />
       
@@ -376,32 +376,6 @@ export function Hero() {
             </div>
             </motion.div>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.5 }}
-          >
-            <a href="#about" className="flex flex-col items-center gap-2 group cursor-pointer">
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
-              >
-                <span className="text-xs text-white/60 group-hover:text-neon-cyan transition-colors">Scroll Down</span>
-                <div className="w-6 h-10 rounded-full border-2 border-white/20 group-hover:border-neon-cyan flex items-start justify-center p-2 transition-colors">
-                  <motion.div
-                    style={{ width: '0.375rem', height: '0.375rem', borderRadius: '9999px', backgroundColor: '#22d3ee' }}
-                    animate={{ y: [0, 12, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  />
-                </div>
-              </motion.div>
-            </a>
-          </motion.div>
         </div>
       </div>
     </section>
