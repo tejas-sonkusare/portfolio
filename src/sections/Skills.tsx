@@ -475,8 +475,9 @@ export function Skills() {
                               initial={{ width: 0 }}
                               animate={{ width: `${proficiencyLevels[category.id as keyof typeof proficiencyLevels]}%` }}
                               transition={{ duration: 1, delay: idx * 0.1 }}
-                              className={`h-full bg-gradient-to-r ${color.gradient}`}
-                            />
+                            >
+                              <div className={`h-full bg-gradient-to-r ${color.gradient}`} />
+                            </motion.div>
                           </div>
                         </div>
                         
