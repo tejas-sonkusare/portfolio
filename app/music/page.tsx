@@ -37,7 +37,7 @@ export default function MusicPage() {
     },
     {
       id: 2,
-      title: "तुम मेरी धड़कन",
+      title: "तेरे नाम",
       artist: "Tejas Sonkusare",
       album: "My Originals",
       duration: "4:20",
