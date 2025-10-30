@@ -4,12 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const subjects = [
-  { name: "Object-Oriented Programming (OOP)", icon: "💻", color: "from-blue-500 to-cyan-500" },
-  { name: "Data Structures & Algorithms (DSA)", icon: "🔢", color: "from-purple-500 to-pink-500" },
-  { name: "Database Management Systems (DBMS)", icon: "🗄️", color: "from-green-500 to-emerald-500" },
-  { name: "Operating Systems (OS)", icon: "⚙️", color: "from-orange-500 to-red-500" },
-  { name: "Computer Networks", icon: "🌐", color: "from-cyan-500 to-blue-500" },
-  { name: "Software Engineering", icon: "🛠️", color: "from-yellow-500 to-orange-500" },
+  { name: "Object-Oriented Programming (OOP)", icon: "💻", color: "from-blue-500 to-cyan-500", proficiency: 92 },
+  { name: "Data Structures & Algorithms (DSA)", icon: "🔢", color: "from-purple-500 to-pink-500", proficiency: 88 },
+  { name: "Database Management Systems (DBMS)", icon: "🗄️", color: "from-green-500 to-emerald-500", proficiency: 90 },
+  { name: "Operating Systems (OS)", icon: "⚙️", color: "from-orange-500 to-red-500", proficiency: 85 },
+  { name: "Computer Networks", icon: "🌐", color: "from-cyan-500 to-blue-500", proficiency: 87 },
+  { name: "Software Engineering", icon: "🛠️", color: "from-yellow-500 to-orange-500", proficiency: 89 },
+];
+
+const achievements = [
+  { icon: "🏆", label: "CGPA", value: "8.91/10", color: "from-yellow-500 to-orange-500" },
+  { icon: "📚", label: "Core Subjects", value: "6+", color: "from-blue-500 to-cyan-500" },
+  { icon: "⭐", label: "Year", value: "2024", color: "from-purple-500 to-pink-500" },
+  { icon: "🎯", label: "Percentile", value: "89.1%", color: "from-green-500 to-emerald-500" },
 ];
 
 export function Education() {
@@ -137,26 +144,39 @@ export function Education() {
                 </div>
               </div>
 
-              {/* Year & CGPA */}
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-gradient-to-br from-neon-cyan/10 to-neon-cyan/5 border border-neon-cyan/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <svg className="w-5 h-5 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="text-white/60 text-sm">Graduated</span>
-                  </div>
-                  <p className="text-2xl font-bold text-white">2024</p>
+              {/* Achievements Stats */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-5 rounded-full bg-gradient-to-b from-neon-cyan to-neon-purple" />
+                  <h4 className="text-lg font-bold text-white">Academic Achievements</h4>
                 </div>
-                
-                <div className="p-4 rounded-xl bg-gradient-to-br from-neon-purple/10 to-neon-purple/5 border border-neon-purple/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <svg className="w-5 h-5 text-neon-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                    <span className="text-white/60 text-sm">CGPA</span>
-                  </div>
-                  <p className="text-2xl font-bold text-white">8.91 <span className="text-base text-white/50">/ 10</span></p>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                  {achievements.map((achievement, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                    >
+                      <div className="relative group h-full">
+                        {/* Glow effect */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300`} />
+                        <div className="relative p-4 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all h-full flex flex-col items-center text-center">
+                          <motion.div
+                            whileHover={{ scale: 1.2, rotate: 360 }}
+                            transition={{ duration: 0.6 }}
+                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${achievement.color} flex items-center justify-center text-2xl mb-3 shadow-lg`}
+                          >
+                            {achievement.icon}
+                          </motion.div>
+                          <p className="text-xs text-white/60 mb-1 uppercase tracking-wider font-semibold">{achievement.label}</p>
+                          <p className="text-xl sm:text-2xl font-bold text-white">{achievement.value}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
 
@@ -197,7 +217,7 @@ export function Education() {
                 </motion.div>
               </div>
 
-              {/* Subjects */}
+              {/* Subjects with Proficiency */}
               <div>
                 <div className="flex items-center gap-2 mb-5">
                   <div className="w-1 h-6 rounded-full bg-gradient-to-b from-neon-cyan to-neon-purple" />
@@ -205,33 +225,55 @@ export function Education() {
                     <svg className="w-5 h-5 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
-                    Key Subjects Studied
+                    Key Subjects & Proficiency
                   </h4>
                 </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid sm:grid-cols-2 gap-4">
                   {subjects.map((subject, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.08 }}
-                      whileHover={{ scale: 1.05, y: -3 }}
+                      whileHover={{ scale: 1.02, y: -2 }}
                     >
                       <div className="relative group h-full">
-                        {/* Gradient Border on Hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${subject.color} opacity-0 group-hover:opacity-100 rounded-xl blur transition-opacity duration-300`} />
-                        <div className="relative flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-transparent transition-all h-full">
-                          <motion.div
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.6 }}
-                            className={`w-10 h-10 rounded-lg bg-gradient-to-br ${subject.color} flex items-center justify-center text-xl flex-shrink-0 shadow-lg`}
-                          >
-                            {subject.icon}
-                          </motion.div>
-                          <span className="text-white/80 group-hover:text-white transition-colors text-sm font-medium leading-tight">
-                            {subject.name}
-                          </span>
+                        {/* Gradient Glow on Hover */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${subject.color} opacity-0 group-hover:opacity-20 rounded-xl blur-xl transition-opacity duration-300`} />
+                        <div className="relative p-4 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all h-full">
+                          {/* Header */}
+                          <div className="flex items-center gap-3 mb-3">
+                            <motion.div
+                              whileHover={{ rotate: 360 }}
+                              transition={{ duration: 0.6 }}
+                              className={`w-10 h-10 rounded-lg bg-gradient-to-br ${subject.color} flex items-center justify-center text-xl flex-shrink-0 shadow-lg`}
+                            >
+                              {subject.icon}
+                            </motion.div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-white/90 group-hover:text-white font-medium text-sm leading-tight truncate">
+                                {subject.name}
+                              </p>
+                              <p className="text-white/60 text-xs mt-0.5">
+                                Proficiency: <span className="font-bold text-white/80">{subject.proficiency}%</span>
+                              </p>
+                            </div>
+                          </div>
+                          
+                          {/* Progress Bar */}
+                          <div className="relative h-2 rounded-full bg-white/10 overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${subject.proficiency}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1, delay: idx * 0.1, ease: "easeOut" }}
+                              className="h-full relative"
+                            >
+                              <div className={`absolute inset-0 bg-gradient-to-r ${subject.color} rounded-full`} />
+                              <div className={`absolute inset-0 bg-gradient-to-r ${subject.color} rounded-full blur-sm opacity-50`} />
+                            </motion.div>
+                          </div>
                         </div>
                       </div>
                     </motion.div>
