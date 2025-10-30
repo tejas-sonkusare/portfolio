@@ -219,10 +219,12 @@ export function Education() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.8, opacity: 0 }}
-                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
-                  className="relative"
                 >
-                  <div className="glass rounded-3xl p-12 border-2 border-white/20 shadow-2xl">
+                  <div 
+                    onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                    className="relative"
+                  >
+                    <div className="glass rounded-3xl p-12 border-2 border-white/20 shadow-2xl">
                     {/* Animated loader */}
                     <div className="flex flex-col items-center gap-6">
                       {/* Spinning degree icon */}
@@ -283,6 +285,7 @@ export function Education() {
                           transition={{ duration: 1, ease: "easeInOut" }}
                         />
                       </div>
+                    </div>
                     </div>
                   </div>
                 </motion.div>
