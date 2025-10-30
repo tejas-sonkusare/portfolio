@@ -23,6 +23,7 @@ export default function MusicPage() {
   const [volume, setVolume] = useState(0.8);
   const [isShuffle, setIsShuffle] = useState(false);
   const [repeatMode, setRepeatMode] = useState<'none' | 'one' | 'all'>('none');
+  const [showCopyright, setShowCopyright] = useState(false);
 
   const songs: Song[] = [
     {
@@ -89,6 +90,17 @@ export default function MusicPage() {
       audioRef.current.play().catch(() => {});
     }
   }, [currentSongIndex]);
+
+  // Show copyright warning when playing
+  useEffect(() => {
+    if (isPlaying) {
+      setShowCopyright(true);
+      const timer = setTimeout(() => {
+        setShowCopyright(false);
+      }, 8000); // Hide after 8 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [isPlaying, currentSongIndex]);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -183,6 +195,103 @@ export default function MusicPage() {
           </button>
         </div>
       </motion.div>
+
+      {/* Copyright Warning Notice */}
+      <AnimatePresence>
+        {showCopyright && (
+          <div className="fixed top-20 sm:top-24 left-1/2 -translate-x-1/2 z-50 max-w-[95%] sm:max-w-md">
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ type: "spring", stiffness: 100 }}
+            >
+              <div className="backdrop-blur-2xl rounded-xl sm:rounded-2xl border p-2.5 sm:p-3 shadow-2xl relative overflow-hidden">
+                <motion.div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(239, 68, 68, 0.15), rgba(185, 28, 28, 0.2))',
+                    borderColor: 'rgba(239, 68, 68, 0.5)',
+                    boxShadow: '0 0 50px rgba(239, 68, 68, 0.3), 0 20px 40px rgba(0,0,0,0.4)',
+                    borderRadius: 'inherit',
+                    pointerEvents: 'none',
+                  }}
+                  animate={{
+                    boxShadow: [
+                      '0 0 50px rgba(239, 68, 68, 0.3), 0 20px 40px rgba(0,0,0,0.4)',
+                      '0 0 60px rgba(220, 38, 38, 0.4), 0 20px 40px rgba(0,0,0,0.4)',
+                      '0 0 50px rgba(239, 68, 68, 0.3), 0 20px 40px rgba(0,0,0,0.4)',
+                    ],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                {/* Animated Background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 via-orange-500/10 to-red-500/10 animate-pulse" />
+                
+                <div className="relative z-10 flex items-center gap-2 sm:gap-2.5">
+                  {/* Warning Icon */}
+                  <div className="flex-shrink-0">
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center"
+                           style={{
+                             background: 'linear-gradient(135deg, #dc2626, #ef4444)',
+                             boxShadow: '0 0 20px rgba(239, 68, 68, 0.4)',
+                           }}>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Warning Text */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-[11px] sm:text-xs font-black uppercase mb-0.5">
+                      <span className="bg-gradient-to-r from-red-200 via-orange-200 to-red-200 bg-clip-text text-transparent">
+                        <motion.span
+                          animate={{
+                            textShadow: [
+                              '0 0 20px rgba(239, 68, 68, 0.5)',
+                              '0 0 30px rgba(220, 38, 38, 0.6)',
+                              '0 0 20px rgba(239, 68, 68, 0.5)',
+                            ],
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          ⚠️ COPYRIGHT PROTECTED
+                        </motion.span>
+                      </span>
+                    </h3>
+                    <p className="text-[9px] sm:text-[10px] text-white/90 font-medium leading-snug">
+                      🚫 DO NOT COPY - Original song © All rights reserved
+                    </p>
+                  </div>
+
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setShowCopyright(false)}
+                    className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 transition-all hover:scale-110 hover:rotate-90"
+                  >
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Main Player Card */}
       <div className="relative z-10 container mx-auto px-3 sm:px-4 pb-8 sm:pb-12 flex items-center justify-center min-h-[calc(100vh-200px)]">
