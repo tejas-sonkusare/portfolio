@@ -17,12 +17,15 @@ const certificationGroups = [
         name: "Palo Alto Networks Certified Cybersecurity Entry-level Technician", 
         issuer: "Palo Alto Networks", 
         featured: true,
+        verified: true,
+        year: "2024",
+        skills: ["Network Security", "Threat Detection", "Firewall"],
         imageUrl: "/certificates/palo-alto-pccet.jpg"
       },
-      { name: "The Fundamentals of SOC - Assessment", issuer: "Palo Alto Networks Academy", featured: false, imageUrl: "/certificates/palo-alto-soc-fundamentals.jpg" },
-      { name: "Microsoft Technology Associate: Security Fundamentals", issuer: "Microsoft", featured: false, imageUrl: "/certificates/microsoft-security-fundamentals.jpg" },
-      { name: "ISC² Candidate", issuer: "ISC²", featured: false, imageUrl: "/certificates/isc2-candidate.jpg" },
-      { name: "NEAT Cybersecurity Virtual Internship", issuer: "AICTE / Govt. of India", featured: false, imageUrl: "/certificates/neat-certificate.jpg" },
+      { name: "The Fundamentals of SOC - Assessment", issuer: "Palo Alto Networks Academy", featured: false, verified: true, year: "2024", skills: ["SOC Operations", "Incident Response"], imageUrl: "/certificates/palo-alto-soc-fundamentals.jpg" },
+      { name: "Microsoft Technology Associate: Security Fundamentals", issuer: "Microsoft", featured: false, verified: true, year: "2023", skills: ["Security Concepts", "Cloud Security"], imageUrl: "/certificates/microsoft-security-fundamentals.jpg" },
+      { name: "ISC² Candidate", issuer: "ISC²", featured: false, verified: true, year: "2024", skills: ["Cybersecurity Principles"], imageUrl: "/certificates/isc2-candidate.jpg" },
+      { name: "NEAT Cybersecurity Virtual Internship", issuer: "AICTE / Govt. of India", featured: false, verified: true, year: "2023", skills: ["Practical Security"], imageUrl: "/certificates/neat-certificate.jpg" },
     ],
   },
   {
@@ -33,12 +36,12 @@ const certificationGroups = [
     bgColor: "bg-cyan-500/5",
     textColor: "text-cyan-400",
     items: [
-      { name: "Google Cloud Study Jam 2023", issuer: "Google Cloud - 2nd Rank", featured: true, imageUrl: "/certificates/google-cloud-study-jam.jpg" },
-      { name: "Azure Fundamentals Cloud Skill Challenge", issuer: "Microsoft Learn Student Ambassador", featured: false, imageUrl: "/certificates/azure-fundamentals-microsoft.jpg" },
-      { name: "DevOps Fundamentals", issuer: "Udemy", featured: false, imageUrl: "/certificates/devops-fundamentals-udemy.jpg" },
-      { name: "IBM SkillsBuild Internship", issuer: "IBM SkillsBuild", featured: false, imageUrl: "/certificates/ibm-skillsbuild-internship.jpg" },
-      { name: "LinkedIn Learning Certifications", issuer: "LinkedIn Learning", featured: false, imageUrl: "/certificates/linkedin-learning-certifications.jpg" },
-      { name: "FutureSkills Prime", issuer: "FutureSkills Prime", featured: false, imageUrl: "/certificates/futureskills-prime.jpg" },
+      { name: "Google Cloud Study Jam 2023", issuer: "Google Cloud - 2nd Rank", featured: true, verified: true, year: "2023", skills: ["GCP", "Cloud Platform", "Qwiklabs"], imageUrl: "/certificates/google-cloud-study-jam.jpg" },
+      { name: "Azure Fundamentals Cloud Skill Challenge", issuer: "Microsoft Learn Student Ambassador", featured: false, verified: true, year: "2023", skills: ["Azure", "Cloud Services"], imageUrl: "/certificates/azure-fundamentals-microsoft.jpg" },
+      { name: "DevOps Fundamentals", issuer: "Udemy", featured: false, verified: true, year: "2024", skills: ["CI/CD", "Automation"], imageUrl: "/certificates/devops-fundamentals-udemy.jpg" },
+      { name: "IBM SkillsBuild Internship", issuer: "IBM SkillsBuild", featured: false, verified: true, year: "2023", skills: ["Cloud Computing", "AI/ML"], imageUrl: "/certificates/ibm-skillsbuild-internship.jpg" },
+      { name: "LinkedIn Learning Certifications", issuer: "LinkedIn Learning", featured: false, verified: true, year: "2023-24", skills: ["Professional Dev"], imageUrl: "/certificates/linkedin-learning-certifications.jpg" },
+      { name: "FutureSkills Prime", issuer: "FutureSkills Prime", featured: false, verified: true, year: "2023", skills: ["Digital Skills"], imageUrl: "/certificates/futureskills-prime.jpg" },
     ],
   },
   {
@@ -49,9 +52,9 @@ const certificationGroups = [
     bgColor: "bg-purple-500/5",
     textColor: "text-purple-400",
     items: [
-      { name: "Android Virtual Internship", issuer: "Google / AICTE", featured: true, imageUrl: "/certificates/android-virtual-internship.jpg" },
-      { name: "Java Full-Stack Development", issuer: "Sipna College", featured: false, imageUrl: null },
-      { name: "Python for Data Science", issuer: "IBM SkillsBuild", featured: false, imageUrl: null },
+      { name: "Android Virtual Internship", issuer: "Google / AICTE", featured: true, verified: true, year: "2023", skills: ["Android Development", "Mobile Apps"], imageUrl: "/certificates/android-virtual-internship.jpg" },
+      { name: "Java Full-Stack Development", issuer: "Sipna College", featured: false, verified: true, year: "2024", skills: ["Java", "Spring Boot"], imageUrl: null },
+      { name: "Python for Data Science", issuer: "IBM SkillsBuild", featured: false, verified: true, year: "2023", skills: ["Python", "Data Analysis"], imageUrl: null },
     ],
   },
   {
@@ -62,7 +65,7 @@ const certificationGroups = [
     bgColor: "bg-pink-500/5",
     textColor: "text-pink-400",
     items: [
-      { name: "Digital Marketing Certification", issuer: "LinkedIn Learning", featured: false, imageUrl: null },
+      { name: "Digital Marketing Certification", issuer: "LinkedIn Learning", featured: false, verified: true, year: "2024", skills: ["SEO", "Social Media", "Analytics"], imageUrl: null },
     ],
   },
   {
@@ -73,8 +76,8 @@ const certificationGroups = [
     bgColor: "bg-yellow-500/5",
     textColor: "text-yellow-400",
     items: [
-      { name: "Techno Ignite 2022 - National Quiz Competition (3rd Prize)", issuer: "Institution of Engineers (India)", featured: true, imageUrl: "/certificates/techno-ignite-2022.jpg" },
-      { name: "Machine Learning Course", issuer: "SHINE PROJECTS", featured: false, imageUrl: "/certificates/machine-learning-shine.jpg" },
+      { name: "Techno Ignite 2022 - National Quiz Competition (3rd Prize)", issuer: "Institution of Engineers (India)", featured: true, verified: true, year: "2022", skills: ["Technical Knowledge", "Problem Solving"], imageUrl: "/certificates/techno-ignite-2022.jpg" },
+      { name: "Machine Learning Course", issuer: "SHINE PROJECTS", featured: false, verified: true, year: "2023", skills: ["ML Algorithms", "AI Concepts"], imageUrl: "/certificates/machine-learning-shine.jpg" },
     ],
   },
 ];
@@ -275,16 +278,59 @@ export function Certifications() {
                       </div>
 
                       {/* Content */}
-                      <div className="text-center mb-6">
-                        <h4 className="text-white font-bold text-lg mb-3 leading-snug min-h-[56px]">
+                      <div className="text-center mb-4">
+                        <h4 className="text-white font-bold text-lg mb-2 leading-snug min-h-[56px]">
                           {cert.name}
                         </h4>
-                        <div className="flex items-center justify-center gap-2 text-white/60 text-sm">
+                        
+                        {/* Issuer & Year */}
+                        <div className="flex items-center justify-center gap-2 text-white/60 text-sm mb-3">
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                           </svg>
                           <span className="line-clamp-1">{cert.issuer}</span>
                         </div>
+
+                        {/* Year & Verified Badge */}
+                        <div className="flex items-center justify-center gap-2 mb-3">
+                          <div className="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-white/80 text-xs font-semibold flex items-center gap-1.5">
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            {cert.year}
+                          </div>
+                          {cert.verified && (
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ type: "spring", delay: idx * 0.1 + 0.2 }}
+                              className={`px-2.5 py-1 rounded-lg bg-gradient-to-r ${certificationGroups[activeCategory].color} text-white text-xs font-bold flex items-center gap-1`}
+                            >
+                              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                              Verified
+                            </motion.div>
+                          )}
+                        </div>
+
+                        {/* Skills Tags */}
+                        {cert.skills && cert.skills.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 justify-center">
+                            {cert.skills.map((skill, skillIdx) => (
+                              <motion.span
+                                key={skillIdx}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: idx * 0.1 + skillIdx * 0.05 }}
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                className="px-2 py-0.5 rounded-md bg-white/10 border border-white/20 text-white/70 text-[10px] font-medium hover:bg-white/20 hover:text-white transition-all"
+                              >
+                                {skill}
+                              </motion.span>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       {/* View Button */}
