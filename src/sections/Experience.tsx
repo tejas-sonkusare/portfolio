@@ -11,6 +11,8 @@ const experiences = [
     period: "Aug 2025 – Present",
     type: "Independent",
     color: "from-orange-500 to-red-500",
+    skills: ["Music Production", "Lyric Writing", "Creative Direction"],
+    achievements: "2+ Original Songs",
     points: [
       "Write and compose original songs and lyrics, blending storytelling with emotional expression and rhythm.",
       "Develop unique music concepts and collaborate with emerging talent for production and publishing.",
@@ -25,6 +27,8 @@ const experiences = [
     period: "June 2025 – Present",
     type: "Founder",
     color: "from-blue-500 to-cyan-500",
+    skills: ["Digital Marketing", "E-commerce", "SEO", "Social Media"],
+    achievements: "Active Brand",
     points: [
       "Founded and currently manage TanuShop, a self-owned dropshipping and digital brand focused on e-commerce growth.",
       "Plan and execute digital marketing campaigns across social platforms including Instagram and Facebook, increasing reach and conversions.",
@@ -40,6 +44,8 @@ const experiences = [
     period: "June 2024 – June 2025",
     type: "Full-time",
     color: "from-purple-500 to-pink-500",
+    skills: ["Jenkins", "Docker", "Kubernetes", "AWS", "Terraform", "Python"],
+    achievements: "1 Year Experience",
     points: [
       "Engineered and optimized CI/CD pipelines using Jenkins, cutting deployment time and eliminating manual errors.",
       "Containerized and deployed scalable applications with Docker and Kubernetes, ensuring reliability and seamless production operations.",
@@ -56,6 +62,8 @@ const experiences = [
     period: "June 2020 – Aug 2021",
     type: "Founder",
     color: "from-green-500 to-emerald-500",
+    skills: ["Content Writing", "SEO", "Social Media", "Analytics"],
+    achievements: "45% Engagement Growth",
     points: [
       "Created and managed TechHindish, an independent tech blog delivering SEO-optimized content focused on digital trends.",
       "Developed and executed social media strategies across Instagram, Facebook, and LinkedIn, achieving a 45% increase in engagement.",
@@ -67,18 +75,37 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="section">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="experience" className="section relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-72 h-72 bg-neon-purple/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-20 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
-              Professional Journey
-            </h2>
-            <p className="text-white/60 mt-4 text-lg">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
+                  Professional Journey
+                </span>
+              </h2>
+            </motion.div>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="w-16 h-1 bg-gradient-to-r from-transparent to-neon-cyan" />
+              <div className="w-3 h-3 rounded-full bg-neon-cyan animate-pulse" />
+              <div className="w-16 h-1 bg-gradient-to-l from-transparent to-neon-cyan" />
+            </div>
+            <p className="text-white/60 text-lg">
               Building, creating, and innovating across different domains
             </p>
           </div>
@@ -106,7 +133,7 @@ export function Experience() {
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="group relative glass rounded-2xl p-6 md:p-8 h-full border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="group relative glass rounded-2xl p-6 md:p-8 h-full border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-neon-cyan/10">
                       {/* Gradient overlay on hover */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
                     
@@ -118,23 +145,27 @@ export function Experience() {
                         whileHover={{ rotate: 360, scale: 1.1 }}
                         transition={{ duration: 0.6 }}
                       >
-                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${exp.color} flex items-center justify-center text-3xl shadow-lg shadow-black/50`}>
+                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${exp.color} flex items-center justify-center text-3xl shadow-lg shadow-black/50 relative`}>
                           {exp.icon}
+                          <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300`} />
                         </div>
                       </motion.div>
                     </div>
 
                     <div className="relative mt-4">
                       {/* Header */}
-                      <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${exp.color} text-white`}>
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${exp.color} text-white shadow-lg`}>
                           {exp.type}
                         </span>
-                        <span className="text-sm text-neon-cyan font-medium">
+                        <span className="text-xs sm:text-sm text-neon-cyan font-medium flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
                           {exp.period}
                         </span>
                         {exp.location && (
-                          <span className="text-sm text-white/50 flex items-center gap-1">
+                          <span className="text-xs sm:text-sm text-white/50 flex items-center gap-1">
                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                             </svg>
@@ -146,12 +177,42 @@ export function Experience() {
                       <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-neon-cyan group-hover:to-neon-purple group-hover:bg-clip-text transition-all duration-300">
                         {exp.role}
                       </h3>
-                      <p className="text-lg text-white/80 font-medium mb-6">
+                      <p className="text-lg text-white/80 font-medium mb-4">
                         {exp.company}
                       </p>
 
+                      {/* Achievement Badge */}
+                      <div className="mb-4">
+                        <motion.div whileHover={{ scale: 1.05 }}>
+                          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                            <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <span className="text-xs font-semibold text-white/80">{exp.achievements}</span>
+                          </div>
+                        </motion.div>
+                      </div>
+
                       {/* Divider */}
-                      <div className={`h-0.5 w-16 bg-gradient-to-r ${exp.color} mb-6`} />
+                      <div className={`h-0.5 w-16 bg-gradient-to-r ${exp.color} mb-4`} />
+
+                      {/* Skills Tags */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {exp.skills.map((skill, idx) => (
+                          <motion.div
+                            key={skill}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 + idx * 0.05 }}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                          >
+                            <span className="inline-block px-2.5 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-lg text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all cursor-default">
+                              {skill}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
 
                       {/* Points */}
                       <ul className="space-y-3">
@@ -186,9 +247,31 @@ export function Experience() {
                     transition={{ delay: i * 0.15 + 0.3, type: "spring" }}
                   >
                     <div className="relative">
-                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.color} shadow-lg relative z-10`}>
+                      {/* Outer glow ring */}
+                      <div className={`absolute inset-0 w-10 h-10 -left-2 -top-2 rounded-full bg-gradient-to-br ${exp.color} opacity-20 blur-md animate-pulse`} />
+                      
+                      {/* Main dot */}
+                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.color} shadow-lg relative z-10 ring-4 ring-dark-bg/50`}>
+                        {/* Animated ping */}
                         <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${exp.color} animate-ping opacity-75`} />
+                        
+                        {/* Inner glow */}
+                        <div className="absolute inset-1 rounded-full bg-white/30" />
                       </div>
+                      
+                      {/* Connecting line animation */}
+                      {i !== experiences.length - 1 && (
+                        <div className="absolute top-6 left-1/2 w-0.5 h-20 -translate-x-1/2">
+                          <motion.div 
+                            initial={{ height: 0 }}
+                            whileInView={{ height: "100%" }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.15 + 0.5, duration: 0.8 }}
+                          >
+                            <div className={`w-full h-full bg-gradient-to-b ${exp.color} opacity-40`} />
+                          </motion.div>
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 </div>
