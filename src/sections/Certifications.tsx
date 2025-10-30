@@ -83,11 +83,15 @@ export function Certifications() {
   const totalCerts = certificationGroups.reduce((acc, group) => acc + group.items.length, 0);
   const [selectedCert, setSelectedCert] = useState<{ name: string; issuer: string; imageUrl: string | null; color: string } | null>(null);
   const [activeCategory, setActiveCategory] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Handle ESC key to close modal
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedCert(null);
+      if (e.key === 'Escape') {
+        setSelectedCert(null);
+        setIsLoading(false);
+      }
     };
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
@@ -95,7 +99,7 @@ export function Certifications() {
 
   // Prevent body scroll when modal is open
   useEffect(() => {
-    if (selectedCert) {
+    if (selectedCert || isLoading) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -105,7 +109,20 @@ export function Certifications() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [selectedCert]);
+  }, [selectedCert, isLoading]);
+
+  // Handle certificate view with loading
+  const handleViewCertificate = (cert: { name: string; issuer: string; imageUrl: string | null; featured: boolean }, color: string) => {
+    if (!cert.imageUrl) return;
+    
+    setIsLoading(true);
+    
+    // Show loading for 1 second
+    setTimeout(() => {
+      setIsLoading(false);
+      setSelectedCert({ ...cert, color });
+    }, 1000);
+  };
 
   return (
     <section id="certifications" className="section relative overflow-hidden">
@@ -289,7 +306,7 @@ export function Certifications() {
 
                       {/* View Button */}
                       <button
-                        onClick={() => cert.imageUrl ? setSelectedCert({ ...cert, color: certificationGroups[activeCategory].color }) : null}
+                        onClick={() => handleViewCertificate(cert, certificationGroups[activeCategory].color)}
                         className={`w-full py-3 px-4 rounded-xl bg-gradient-to-r ${certificationGroups[activeCategory].color} text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 ${!cert.imageUrl ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
                       >
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -366,6 +383,96 @@ export function Certifications() {
             </div>
           </div>
         </motion.div>
+
+        {/* Loading Modal */}
+        <AnimatePresence>
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div 
+                onClick={() => {
+                  setIsLoading(false);
+                }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+              >
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                  className="relative"
+                >
+                  <div className="glass rounded-3xl p-12 border-2 border-white/20 shadow-2xl">
+                    {/* Animated loader */}
+                    <div className="flex flex-col items-center gap-6">
+                      {/* Spinning certificate icon */}
+                      <motion.div
+                        animate={{ 
+                          rotate: 360,
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 1, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 0.5, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-2xl">
+                          <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                        </div>
+                      </motion.div>
+
+                      {/* Loading text */}
+                      <div className="text-center">
+                        <motion.h3 
+                          className="text-2xl font-bold text-white mb-2"
+                          animate={{ opacity: [1, 0.5, 1] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          Loading Certificate...
+                        </motion.h3>
+                        <p className="text-white/60 text-sm">Please wait a moment</p>
+                      </div>
+
+                      {/* Animated dots */}
+                      <div className="flex gap-2">
+                        {[0, 1, 2].map((i) => (
+                          <motion.div
+                            key={i}
+                            className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                            animate={{
+                              scale: [1, 1.5, 1],
+                              opacity: [0.5, 1, 0.5]
+                            }}
+                            transition={{
+                              duration: 1,
+                              repeat: Infinity,
+                              delay: i * 0.2
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Progress bar */}
+                      <div className="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500"
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 1, ease: "easeInOut" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Certificate Preview Modal */}
         <AnimatePresence>

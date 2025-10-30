@@ -12,10 +12,11 @@ const subjects = [
 
 export function Education() {
   const [showDegree, setShowDegree] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
-    if (showDegree) {
+    if (showDegree || isLoading) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -23,16 +24,30 @@ export function Education() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [showDegree]);
+  }, [showDegree, isLoading]);
 
   // Handle ESC key to close modal
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowDegree(false);
+      if (e.key === 'Escape') {
+        setShowDegree(false);
+        setIsLoading(false);
+      }
     };
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
+
+  // Handle view degree with loading
+  const handleViewDegree = () => {
+    setIsLoading(true);
+    
+    // Show loading for 1 second
+    setTimeout(() => {
+      setIsLoading(false);
+      setShowDegree(true);
+    }, 1000);
+  };
 
   return (
     <section id="education" className="section">
@@ -144,7 +159,7 @@ export function Education() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <button
-                    onClick={() => setShowDegree(true)}
+                    onClick={handleViewDegree}
                     className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-purple text-white font-bold shadow-xl hover:shadow-neon-cyan/50 transition-all flex items-center justify-center gap-3"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -185,6 +200,96 @@ export function Education() {
           </div>
           </div>
         </motion.div>
+
+        {/* Loading Modal */}
+        <AnimatePresence>
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div 
+                onClick={() => {
+                  setIsLoading(false);
+                }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+              >
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                  className="relative"
+                >
+                  <div className="glass rounded-3xl p-12 border-2 border-white/20 shadow-2xl">
+                    {/* Animated loader */}
+                    <div className="flex flex-col items-center gap-6">
+                      {/* Spinning degree icon */}
+                      <motion.div
+                        animate={{ 
+                          rotate: 360,
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 1, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 0.5, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink flex items-center justify-center shadow-2xl">
+                          <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
+                      </motion.div>
+
+                      {/* Loading text */}
+                      <div className="text-center">
+                        <motion.h3 
+                          className="text-2xl font-bold text-white mb-2"
+                          animate={{ opacity: [1, 0.5, 1] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          Loading Degree Certificate...
+                        </motion.h3>
+                        <p className="text-white/60 text-sm">Please wait a moment</p>
+                      </div>
+
+                      {/* Animated dots */}
+                      <div className="flex gap-2">
+                        {[0, 1, 2].map((i) => (
+                          <motion.div
+                            key={i}
+                            className="w-3 h-3 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple"
+                            animate={{
+                              scale: [1, 1.5, 1],
+                              opacity: [0.5, 1, 0.5]
+                            }}
+                            transition={{
+                              duration: 1,
+                              repeat: Infinity,
+                              delay: i * 0.2
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Progress bar */}
+                      <div className="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink"
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 1, ease: "easeInOut" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Degree Certificate Modal */}
         <AnimatePresence>
