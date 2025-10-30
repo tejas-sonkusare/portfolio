@@ -286,8 +286,20 @@ const colorMap: Record<string, { gradient: string; text: string; border: string;
   },
 };
 
+const proficiencyLevels = {
+  devops: 95,
+  programming: 90,
+  ai: 82,
+  security: 88,
+  marketing: 85,
+  content: 92,
+  design: 80,
+  music: 94,
+};
+
 export function Skills() {
   const [activeTab, setActiveTab] = useState(0);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const activeCategory = skillCategories[activeTab];
   const activeColor = colorMap[activeCategory.color];
 
@@ -452,10 +464,19 @@ export function Skills() {
                           <div className={`font-bold text-sm ${isActive ? color.text : "text-white"} transition-colors duration-300 truncate`}>
                             {category.title}
                           </div>
-                          <div className="flex items-center gap-1.5 mt-0.5">
+                          <div className="flex items-center gap-1.5 mt-1">
                             <span className="text-xs text-white/50">{category.mainSkills.length} core</span>
                             <span className="text-white/30">•</span>
                             <span className="text-xs text-white/50">{category.subCategories.length} cat</span>
+                          </div>
+                          {/* Mini Proficiency Bar */}
+                          <div className="mt-2 h-1 rounded-full bg-white/10 overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${proficiencyLevels[category.id as keyof typeof proficiencyLevels]}%` }}
+                              transition={{ duration: 1, delay: idx * 0.1 }}
+                              className={`h-full bg-gradient-to-r ${color.gradient}`}
+                            />
                           </div>
                         </div>
                         
@@ -496,23 +517,61 @@ export function Skills() {
               transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 25 }}
             >
               <div className="glass rounded-2xl border border-white/10 overflow-hidden shadow-xl">
-                {/* Compact Header */}
+                {/* Enhanced Header with Proficiency */}
                 <div className={`p-5 bg-gradient-to-br ${activeColor.bg} border-b ${activeColor.border}`}>
                   <div className="flex items-start gap-4">
                     <motion.div
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                      whileHover={{ scale: 1.1, rotate: 10 }}
+                      whileHover={{ scale: 1.1, rotate: 360 }}
                     >
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${activeColor.gradient} flex items-center justify-center text-3xl shadow-xl ${activeColor.shadow}`}>
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${activeColor.gradient} flex items-center justify-center text-3xl shadow-xl ${activeColor.shadow} relative`}>
                       {activeCategory.icon}
+                      {/* Glow effect */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${activeColor.gradient} opacity-0 hover:opacity-50 blur-xl transition-opacity duration-300 rounded-2xl`} />
                       </div>
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                        {activeCategory.title}
-                      </h3>
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <h3 className="text-xl md:text-2xl font-bold text-white">
+                          {activeCategory.title}
+                        </h3>
+                        {/* Proficiency Badge */}
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", delay: 0.2 }}
+                          className={`px-3 py-1.5 rounded-lg bg-gradient-to-r ${activeColor.gradient} text-white font-black text-sm shadow-lg flex items-center gap-1.5`}
+                        >
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                          {proficiencyLevels[activeCategory.id as keyof typeof proficiencyLevels]}%
+                        </motion.div>
+                      </div>
+                      
+                      {/* Proficiency Bar */}
+                      <div className="mb-3">
+                        <div className="flex justify-between items-center mb-1.5">
+                          <span className="text-xs text-white/60 font-medium">Overall Proficiency</span>
+                          <span className={`text-xs ${activeColor.text} font-bold`}>
+                            {proficiencyLevels[activeCategory.id as keyof typeof proficiencyLevels]}%
+                          </span>
+                        </div>
+                        <div className="h-2 rounded-full bg-white/10 overflow-hidden relative">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${proficiencyLevels[activeCategory.id as keyof typeof proficiencyLevels]}%` }}
+                            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                            className="h-full relative"
+                          >
+                            <div className={`absolute inset-0 bg-gradient-to-r ${activeColor.gradient} rounded-full`} />
+                            <div className={`absolute inset-0 bg-gradient-to-r ${activeColor.gradient} rounded-full blur-sm opacity-50`} />
+                          </motion.div>
+                        </div>
+                      </div>
+
                       <p className={`text-xs ${activeColor.text} font-semibold mb-2`}>
                         {activeCategory.mainSkills.length} Main • {activeCategory.subCategories.length} Categories
                       </p>
@@ -581,17 +640,35 @@ export function Skills() {
                           </h5>
                           <div className="flex flex-wrap gap-1.5">
                             {subCat.items.map((item, i) => (
-                              <motion.span
+                              <motion.div
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.6 + idx * 0.1 + i * 0.03 }}
                                 whileHover={{ scale: 1.08, y: -2 }}
+                                onHoverStart={() => setHoveredSkill(item)}
+                                onHoverEnd={() => setHoveredSkill(null)}
+                                className="relative"
                               >
-                                <span className="px-2 py-1 rounded-md bg-white/10 border border-white/20 text-white/80 text-xs font-medium hover:border-white/40 transition-all inline-block">
-                    {item}
-                  </span>
-                              </motion.span>
+                                <span className={`px-2 py-1 rounded-md bg-white/10 border text-white/80 text-xs font-medium transition-all inline-block ${
+                                  hoveredSkill === item 
+                                    ? `border-white/60 ${activeColor.bg} ${activeColor.text} shadow-lg` 
+                                    : 'border-white/20 hover:border-white/40'
+                                }`}>
+                                  {item}
+                                </span>
+                                {/* Tooltip effect */}
+                                {hoveredSkill === item && (
+                                  <motion.div
+                                    initial={{ opacity: 0, y: 5 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className={`absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-gradient-to-r ${activeColor.gradient} text-white text-[10px] font-bold whitespace-nowrap shadow-lg pointer-events-none z-10`}
+                                  >
+                                    Skilled
+                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-${activeCategory.color}-500`} />
+                                  </motion.div>
+                                )}
+                              </motion.div>
                             ))}
                           </div>
                         </div>
