@@ -56,6 +56,15 @@ export function Navbar() {
                   </a>
                 </li>
               ))}
+              {/* Special Music Button */}
+              <li>
+                <Link
+                  href="/music"
+                  className="px-5 py-2 rounded-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink text-white font-bold text-sm hover:shadow-glow transition-all whitespace-nowrap ml-2"
+                >
+                  🎵 Music
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -134,6 +143,20 @@ export function Navbar() {
                           </a>
                         </motion.li>
                       ))}
+                      {/* Special Music Button */}
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: sections.length * 0.05 }}
+                      >
+                        <Link
+                          href="/music"
+                          onClick={handleLinkClick}
+                          className="block px-4 py-3 rounded-xl bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink text-white font-bold text-center hover:shadow-glow transition-all"
+                        >
+                          🎵 Music
+                        </Link>
+                      </motion.li>
                     </ul>
                   </nav>
                 </motion.div>

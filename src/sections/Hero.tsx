@@ -162,7 +162,7 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="relative">
+            <div className="relative px-8 sm:px-12 md:px-16 py-8">
             <div className="relative mx-auto max-w-md">
               <div className="absolute inset-0 rounded-full blur-3xl bg-neon-cyan/30" />
               {/* Rotating border ring */}
@@ -191,87 +191,6 @@ export function Hero() {
                   priority
                 />
               </div>
-              {/* Main Skill Categories in Circular Layout - Hidden on mobile */}
-              
-              {/* Top Center */}
-              <motion.div
-                animate={{ y: [0, -12, 0], rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-              >
-                <div className="hidden lg:block absolute -top-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-xs">
-                  <span className="text-neon-cyan font-semibold">DevOps</span>
-                </div>
-              </motion.div>
-
-              {/* Top Right */}
-              <motion.div
-                animate={{ x: [0, 10, 0], y: [0, -10, 0], rotate: [0, 3, -3, 0] }}
-                transition={{ duration: 4.2, repeat: Infinity, delay: 0.3 }}
-              >
-                <div className="hidden lg:block absolute top-8 -right-8 glass px-3 py-1.5 rounded-full text-xs">
-                  <span className="text-neon-blue">Cloud</span>
-                </div>
-              </motion.div>
-
-              {/* Right Center */}
-              <motion.div
-                animate={{ x: [0, 12, 0], rotate: [0, 4, -4, 0] }}
-                transition={{ duration: 3.8, repeat: Infinity, delay: 0.6 }}
-              >
-                <div className="hidden lg:block absolute top-1/2 -right-20 glass px-3 py-1.5 rounded-full text-xs">
-                  <span className="text-neon-cyan">Full-Stack</span>
-                </div>
-              </motion.div>
-
-              {/* Bottom Right */}
-              <motion.div
-                animate={{ x: [0, 8, 0], y: [0, 10, 0], rotate: [0, -3, 3, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, delay: 0.9 }}
-              >
-                <div className="hidden lg:block absolute bottom-8 -right-8 glass px-3 py-1.5 rounded-full text-xs">
-                  <span className="text-neon-blue">Cybersecurity</span>
-                </div>
-              </motion.div>
-
-              {/* Bottom Center */}
-              <motion.div
-                animate={{ y: [0, 12, 0], rotate: [0, -5, 5, 0] }}
-                transition={{ duration: 4.3, repeat: Infinity, delay: 1.2 }}
-              >
-                <div className="hidden lg:block absolute -bottom-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-full text-xs">
-                  <span className="text-neon-cyan font-semibold">AI/ML</span>
-                </div>
-              </motion.div>
-
-              {/* Bottom Left */}
-              <motion.div
-                animate={{ x: [0, -8, 0], y: [0, 10, 0], rotate: [0, 3, -3, 0] }}
-                transition={{ duration: 3.7, repeat: Infinity, delay: 1.5 }}
-              >
-                <div className="hidden lg:block absolute bottom-8 -left-12 glass px-3 py-1.5 rounded-full text-xs">
-                  <span className="text-neon-blue">Digital Marketing</span>
-                </div>
-              </motion.div>
-
-              {/* Left Center */}
-              <motion.div
-                animate={{ x: [0, -12, 0], rotate: [0, -4, 4, 0] }}
-                transition={{ duration: 4.1, repeat: Infinity, delay: 1.8 }}
-              >
-                <div className="hidden lg:block absolute top-1/2 -left-20 glass px-3 py-1.5 rounded-full text-xs">
-                  <span className="text-neon-cyan">Content</span>
-                </div>
-              </motion.div>
-
-              {/* Top Left */}
-              <motion.div
-                animate={{ x: [0, -10, 0], y: [0, -10, 0], rotate: [0, -3, 3, 0] }}
-                transition={{ duration: 4.4, repeat: Infinity, delay: 2.1 }}
-              >
-                <div className="hidden lg:block absolute top-8 -left-16 glass px-3 py-1.5 rounded-full text-xs">
-                  <span className="text-neon-blue">Music</span>
-                </div>
-              </motion.div>
             </div>
             </div>
           </motion.div>
