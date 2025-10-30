@@ -66,7 +66,7 @@ export function Hero() {
   }, [charIndex, isDeleting, skillIndex]);
 
   return (
-    <section id="home" className="section relative overflow-hidden pt-28 pb-16 min-h-[calc(100vh-4rem)] flex items-center">
+    <section id="home" className="section relative overflow-hidden pt-24 pb-12 min-h-[90vh] flex items-center">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-neon-blue/10" />
       
