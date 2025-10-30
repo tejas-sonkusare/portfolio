@@ -359,7 +359,7 @@ export function Hero() {
                   </motion.div>
                 </div>
 
-                <div className="absolute top-1/2 -right-8 glass px-3 py-2 rounded-xl border border-purple-400/30">
+                <div className="absolute -bottom-4 -right-4 glass px-3 py-2 rounded-xl border border-purple-400/30">
                   <motion.div
                     animate={{
                       x: [0, 10, 0],
