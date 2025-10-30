@@ -66,12 +66,12 @@ export function Hero() {
   }, [charIndex, isDeleting, skillIndex]);
 
   return (
-    <section id="home" className="section relative overflow-hidden pt-20 min-h-[85vh] flex items-center">
+    <section id="home" className="section relative overflow-hidden pt-28 pb-16 min-h-[calc(100vh-4rem)] flex items-center">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-neon-blue/10" />
       
       {/* Floating gradient orbs */}
-      <div className="absolute top-20 left-10 w-60 h-60 bg-neon-cyan/20 rounded-full blur-3xl">
+      <div className="absolute top-20 left-10 w-72 h-72 bg-neon-cyan/20 rounded-full blur-3xl">
         <motion.div
           style={{ width: '100%', height: '100%' }}
           animate={{
@@ -81,7 +81,7 @@ export function Hero() {
           transition={{ duration: 8, repeat: Infinity }}
         />
       </div>
-      <div className="absolute bottom-20 right-10 w-72 h-72 bg-neon-blue/20 rounded-full blur-3xl">
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-neon-blue/20 rounded-full blur-3xl">
         <motion.div
           style={{ width: '100%', height: '100%' }}
           animate={{
@@ -91,7 +91,7 @@ export function Hero() {
           transition={{ duration: 10, repeat: Infinity }}
         />
       </div>
-      <div className="absolute top-1/2 left-1/2 w-52 h-52 bg-purple-500/10 rounded-full blur-3xl">
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl">
         <motion.div
           style={{ width: '100%', height: '100%' }}
           animate={{
@@ -120,7 +120,7 @@ export function Hero() {
         />
       </div>
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="text-center md:text-left">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -138,7 +138,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-tight">
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
                 <span className="text-white/90">Hi, I am </span>
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-cyan">
                   Tejas Sonkusare
@@ -151,7 +151,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1 }}
             >
-              <div className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-2xl h-8 sm:h-10 text-neon-cyan font-semibold">
+              <div className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl h-10 sm:h-12 text-neon-cyan font-semibold">
                 <span>{displayedText}</span>
                 <span className="animate-pulse">|</span>
               </div>
@@ -162,7 +162,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
             >
-              <span className="mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base text-white/70 leading-relaxed block">
+              <span className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base md:text-lg text-white/70 leading-relaxed block">
                 I build scalable, secure, and automated cloud systems and deliver seamless full‑stack experiences that drive business impact.
               </span>
             </motion.p>
@@ -172,7 +172,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.4 }}
             >
-              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
+              <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
               <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <a
                   href="#projects"
@@ -211,8 +211,8 @@ export function Hero() {
             </motion.div>
 
             {/* Social Links */}
-            <div className="mt-4 sm:mt-6">
-              <div className="flex gap-3 justify-center md:justify-start">
+            <div className="mt-8 sm:mt-10">
+              <div className="flex gap-4 justify-center md:justify-start">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -254,7 +254,7 @@ export function Hero() {
             </div>
 
             {/* Quick Stats */}
-            <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-3 sm:gap-4">
+            <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6">
               {[
                 { label: "Projects", value: "7+", icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" },
                 { label: "Experience", value: "1.3 Yrs", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
@@ -267,18 +267,18 @@ export function Hero() {
                   transition={{ delay: 0.8 + index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.05 }}
                 >
-                  <div className="glass rounded-xl p-3 sm:p-4 text-center hover:border-neon-cyan/50 transition-all duration-300 group">
-                    <div className="flex justify-center mb-1.5">
-                      <div className="p-1.5 rounded-lg bg-neon-cyan/10 group-hover:bg-neon-cyan/20 transition-colors">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="glass rounded-2xl p-4 sm:p-5 text-center hover:border-neon-cyan/50 transition-all duration-300 group">
+                    <div className="flex justify-center mb-2">
+                      <div className="p-2 rounded-lg bg-neon-cyan/10 group-hover:bg-neon-cyan/20 transition-colors">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
                         </svg>
                       </div>
                     </div>
-                    <div className="text-lg sm:text-xl font-bold bg-gradient-to-r from-neon-cyan to-neon-blue bg-clip-text text-transparent">
+                    <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-blue bg-clip-text text-transparent">
                       {stat.value}
                     </div>
-                    <div className="text-[10px] sm:text-xs text-white/60 mt-0.5">{stat.label}</div>
+                    <div className="text-xs sm:text-sm text-white/60 mt-1">{stat.label}</div>
                   </div>
                 </motion.div>
               ))}
@@ -291,8 +291,8 @@ export function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-            <div className="relative px-6 sm:px-8 md:px-12 py-6">
-              <div className="relative mx-auto max-w-sm">
+            <div className="relative px-8 sm:px-12 md:px-16 py-8">
+              <div className="relative mx-auto max-w-md">
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-full blur-3xl bg-neon-cyan/30 animate-pulse" />
                 
@@ -379,7 +379,7 @@ export function Hero() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
