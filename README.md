@@ -9,7 +9,7 @@ A modern, feature-rich portfolio website showcasing professional experience, pro
 
 ## 🌟 Live Demo
 
-Visit the live portfolio: [Your Deployment URL]
+Visit the live portfolio: **[https://tejas-sonkusare-portfolio.vercel.app/](https://tejas-sonkusare-portfolio.vercel.app/)**
 
 ## 🚀 Technologies & Tools
 
@@ -402,7 +402,7 @@ This is a personal portfolio project, but suggestions and feedback are welcome!
 - **Email**: tejassonkusare5@gmail.com
 - **LinkedIn**: [Tejas Sonkusare](https://www.linkedin.com/in/tejas-sonkusare-273581230/)
 - **GitHub**: [tejassonkusare](https://github.com/tejassonkusare)
-- **Portfolio**: [Visit Website]
+- **Portfolio**: [https://tejas-sonkusare-portfolio.vercel.app/](https://tejas-sonkusare-portfolio.vercel.app/)
 
 ## 📄 License
 
