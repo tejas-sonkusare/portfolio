@@ -210,9 +210,42 @@ export function Hero() {
               </div>
             </motion.div>
 
+            {/* Quick Stats */}
+            <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6">
+              {[
+                { label: "Projects", value: "7+", icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" },
+                { label: "Experience", value: "1.3 Yrs", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { label: "Certifications", value: "17+", icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                >
+                  <div className="glass rounded-2xl p-4 sm:p-5 text-center hover:border-neon-cyan/50 transition-all duration-300 group">
+                    <div className="flex justify-center mb-2">
+                      <div className="p-2 rounded-lg bg-neon-cyan/10 group-hover:bg-neon-cyan/20 transition-colors">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-blue bg-clip-text text-transparent">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs sm:text-sm text-white/60 mt-1">{stat.label}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
             {/* Social Links */}
-            <div className="mt-8 sm:mt-10">
-              <div className="flex gap-4 justify-center md:justify-start">
+            <div className="mb-6 sm:mb-8">
+              <div className="flex gap-4 justify-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -253,39 +286,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Quick Stats */}
-            <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6">
-              {[
-                { label: "Projects", value: "7+", icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" },
-                { label: "Experience", value: "1.3 Yrs", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { label: "Certifications", value: "17+", icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                >
-                  <div className="glass rounded-2xl p-4 sm:p-5 text-center hover:border-neon-cyan/50 transition-all duration-300 group">
-                    <div className="flex justify-center mb-2">
-                      <div className="p-2 rounded-lg bg-neon-cyan/10 group-hover:bg-neon-cyan/20 transition-colors">
-                        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-blue bg-clip-text text-transparent">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs sm:text-sm text-white/60 mt-1">{stat.label}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
